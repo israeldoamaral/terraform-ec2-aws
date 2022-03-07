@@ -95,7 +95,7 @@ No outputs.
   - A variável `ec2_count` define o quantidade de instancias ec2 que seram criadas.
   - A variável `ami_id` define qual AMI será utilizada. OBS: Pode ser obtida através da console da AWS ou utilizando um datasource do Terraform.
   
-     > Exemplo
+     > Exemplo de DataSource
   
   ```hcl
     data "aws_ami" "ubuntu1604" {
@@ -115,8 +115,8 @@ No outputs.
     }
     
   ```
-   #
-   <summary>Aplicando no módulo</summary> 
+   
+   > Aplicando no módulo
    
      ami_id = "${data.aws_ami.ubuntu1604.id}"
    
