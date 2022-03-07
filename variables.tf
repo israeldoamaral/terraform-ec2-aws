@@ -19,3 +19,5 @@ variable "key_name" {
 }
 
 variable "userdata" {}
+
+variable "tag_name {}
