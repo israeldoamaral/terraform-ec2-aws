@@ -1,7 +1,7 @@
-# terraform_aws_vpc
+# terraform_ec2-aws
 - [x] Status:  Ainda em desenvolvimento.
 ###
-### Módulo para criar uma VPC na AWS composta dos recursos, Vpc, subnets (publicas e privadas), network Acls, route tables e internet gateway. Para utilizar este módulo é necessário os seguintes arquivos especificados logo abaixo:
+### Módulo para criar uma Instancia na AWS. Para utilizar este módulo é necessário os seguintes arquivos especificados logo abaixo:
 
    <summary>versions.tf - Arquivo com as versões dos providers.</summary>
 
@@ -25,56 +25,50 @@ provider "aws" {
   region  = var.region
 }
 
+resource "aws_instance" "ec2" {
+  count                       = var.ec2_count
+  ami                         = var.ami_id
+  associate_public_ip_address = true
+  instance_type               = var.instance_type
+  subnet_id                   = var.subnet_id
+  # security_groups = [var.security_group]
+  vpc_security_group_ids      = [var.security_group]
+  key_name                    = var.key_name
+  user_data = "${file("${var.userdata}")}"
 
-module "network" {
-  source          = "git::https://github.com/israeldoamaral/terraform-vpc-aws"
-  region          = var.region
-  cidr            = var.cidr
-  count_available = var.count_available
-  vpc             = module.network.vpc
-  tag_vpc         = var.tag_vpc
-  nacl            = var.nacl
+  tags = {
+    "Name" = var.tag_name
+  }
+
 }
 ```
 #
 <summary>variables.tf - Arquivo que contém as variáveis que o módulo irá utilizar e pode ter os valores alterados de acordo com a necessidade.</summary>
 
 ```hcl
-variable "region" {
-  type        = string
-  description = "Região na AWS"
-  default     = "us-east-1"
+variable "ec2_count" {
+  default = "1"
 }
 
-variable "cidr" {
-  description = "CIDR da VPC"
-  type        = string
-  default     = "10.10.0.0/16"
+variable "ami_id" {}
+
+variable "instance_type" {
+  default = "t2.micro"
 }
 
-variable "count_available" {
-  type        = number
-  description = "Numero de Zonas de disponibilidade"
-  default     = 2
+variable "subnet_id" {}
+
+variable "security_group" {
+  type = string
 }
 
-variable "tag_vpc" {
-  description = "Tag Name da VPC"
-  type        = string
-  default     = "VPC-name"
+variable "key_name" {
+
 }
 
+variable "userdata" {}
 
-variable "nacl" {
-  description = "Regras de Network Acls AWS"
-  type        = map(object({ protocol = string, action = string, cidr_blocks = string, from_port = number, to_port = number }))
-  default = {
-    100 = { protocol = "tcp", action = "allow", cidr_blocks = "0.0.0.0/0", from_port = 22, to_port = 22 }
-    105 = { protocol = "tcp", action = "allow", cidr_blocks = "0.0.0.0/0", from_port = 80, to_port = 80 }
-    110 = { protocol = "tcp", action = "allow", cidr_blocks = "0.0.0.0/0", from_port = 443, to_port = 443 }
-    150 = { protocol = "tcp", action = "allow", cidr_blocks = "0.0.0.0/0", from_port = 1024, to_port = 65535 }
-  }
-}
+variable "tag_name" {}
 
 ```
 #
