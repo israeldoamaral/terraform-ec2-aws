@@ -42,7 +42,7 @@ module "ec2" {
 ```
 
 #
-<summary>outputs.tf - Outputs de recursos que serão utilizados em outros módulos.</summary>
+<summary>outputs.tf - Outputs de recursos que serão utilizados em outros módulos. OBS: Lembre-se de modificar o nome após o "module.<nome do módulo>"</summary>
 
 ```hcl
 output "public_ip" {
