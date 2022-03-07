@@ -26,7 +26,7 @@ provider "aws" {
 }
 
 module "ec2" {
-  source         = "./.terraform/modules/ec2"
+  source         = "git::https://github.com/israeldoamaral/terraform-ec2-aws"
   ec2_count      = 1
   ami_id         = "ami-04505e74c0741db8d"
   instance_type  = "t2.micro"
