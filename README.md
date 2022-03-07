@@ -81,7 +81,9 @@ No resources.
 | <a name="input_instance_type"></a> [instance_type](#input\_instance_type) | Tipo de instancia da AWS. Ex: t3.medium | `string` | "t2.micro" | yes |
 | <a name="input_subnet_id"></a> [subnet_id](#input\_subnet_id) | Id da Subnet criada na VPC, ex: "subnet-02c0fd20a4fc54abd" | `string` | `" "` | yes |
 | <a name="input_security_group"></a> [security_group](#input\_security_group) | ID do Segurity Group. Ex: sg-00a2eba48a39ad491  | `string` | `" "` | no |
-| <a name="input_key_name"></a> [key_name](#input\_key_name) | Nome da key_pair. Ex: terraform-key  | `string` | `" "` | no |
+| <a name="input_key_name"></a> [key_name](#input\_key_name) | Nome da key Pairs. Ex: terraform-key  | `string` | `" "` | no |
+| <a name="input_userdata"></a> [userdata](#input\_userdata) | Nome do script com os comandos a serem executados. Ex: install.sh  | `string` | `" "` | no |
+| <a name="input_tag_name"></a> [tag_name](#input\_tag_name) | Nome da tag Label da Instancia. Ex: ec2_web  | `string` | `" "` | yes |
 
 ## Outputs
 
