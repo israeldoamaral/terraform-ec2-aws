@@ -94,8 +94,8 @@ No outputs.
   - Após criar os arquivos, atente-se aos valores default das variáveis, pois podem ser alterados de acordo com sua necessidade. 
   - A variável `ec2_count` define o quantidade de instancias ec2 que seram criadas.
   - A variável `ami_id` define qual AMI será utilizada. OBS: Pode ser obtida através da console da AWS ou utilizando um datasource do Terraform.
-    
-  -- <summary>Exemplo</summary>
+  #  
+  <summary>Exemplo</summary>
     
     data "aws_ami" "ubuntu1604" {
     most_recent = true
