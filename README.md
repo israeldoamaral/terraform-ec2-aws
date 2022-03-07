@@ -114,7 +114,7 @@ No outputs.
    }
    
    
-   # Chamando no Módulo
+    - Chamando no Módulo
      ami_id = "${data.aws_ami.ubuntu1604.id}"
    
     
