@@ -114,7 +114,8 @@ No outputs.
    }
    
    
-   ami_id = "${data.aws_ami.ubuntu1604.id}"
+   # Chamando no Módulo
+     ami_id = "${data.aws_ami.ubuntu1604.id}"
    
     
   - Certifique-se que possua as credenciais da AWS - **`AWS_ACCESS_KEY_ID`** e **`AWS_SECRET_ACCESS_KEY`**.
