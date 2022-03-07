@@ -96,7 +96,7 @@ No outputs.
   - A variável `ami_id` define qual AMI será utilizada. OBS: Pode ser obtida através da console da AWS ou utilizando um datasource do Terraform.
   
   > Exemplo de DataSource
-  
+  > 
   ```hcl
    data "aws_ami" "ubuntu1604" {
    most_recent = true
