@@ -97,7 +97,7 @@ No outputs.
   
   > Exemplo de DataSource
 
-  -  ```hcl
+  ```hcl
    data "aws_ami" "ubuntu1604" {
    most_recent = true
 
@@ -121,7 +121,13 @@ No outputs.
   ```hcl 
   ami_id = "${data.aws_ami.ubuntu1604.id}"
   ```  
-    
+  
+  - A variável `instance_type` define qual tipo de Instancia será utilizada. Ex: t2.micro
+  - A variável `subnet_id` define qual Id da subnet sera utilizado. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
+  - A variável `security_group` define o Id de um Security Group já criado. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
+  - A variável `key_name` Nome da chave para acessar uma instancia. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
+  - A variável `userdata` Define o nome do arquivo (script) com os comandos a serem executados na instancia. Ex: install.sh
+  - A variável `tag_name` Define o nome que sera mostrado no campo tag da instancia.
   - Certifique-se que possua as credenciais da AWS - **`AWS_ACCESS_KEY_ID`** e **`AWS_SECRET_ACCESS_KEY`**.
 
 ### Comandos
