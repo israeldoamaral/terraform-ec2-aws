@@ -10,7 +10,7 @@ resource "aws_instance" "ec2" {
   user_data = "${file("${var.userdata}")}"
 
   tags = {
-    "Name" = "Jenkins"
+    "Name" = var.tag_name
   }
 
 }
