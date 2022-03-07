@@ -79,20 +79,21 @@ No resources.
 | <a name="input_ec2_count"></a> [ec2_count](#input\_ec2_count) | Número de instanacias a ser criada, ex: ec2_count = 2 | `string` | `"1"` | yes |
 | <a name="input_ami_id"></a> [ami_id](#input\_ami_id) | ID da AMI ex: "ami-04505e74c0741db8d" | `string` | `""` | yes |
 | <a name="input_instance_type"></a> [instance_type](#input\_instance_type) | Tipo de instancia da AWS. Ex: t3.medium | `string` | "t2.micro" | yes |
-| <a name="input_subnet_id"></a> [subnet_id](#input\_subnet_id) | Id da Subnet criada na VPC, ex: "subnet-02c0fd20a4fc54abd" | `string` | `" "` | yes |
-| <a name="input_security_group"></a> [security_group](#input\_security_group) | ID do Segurity Group. Ex: sg-00a2eba48a39ad491  | `string` | `" "` | no |
+| <a name="input_subnet_id"></a> [subnet_id](#input\_subnet_id) | Id da Subnet criada na VPC, ex: "subnet-02c0fd20a4fc54abd" | `string` | `""` | yes |
+| <a name="input_security_group"></a> [security_group](#input\_security_group) | ID do Segurity Group. Ex: sg-00a2eba48a39ad491  | `string` | `""` | no |
 | <a name="input_key_name"></a> [key_name](#input\_key_name) | Nome da key Pairs. Ex: terraform-key  | `string` | `" "` | no |
-| <a name="input_userdata"></a> [userdata](#input\_userdata) | Nome do script com os comandos a serem executados. Ex: install.sh  | `string` | `" "` | no |
-| <a name="input_tag_name"></a> [tag_name](#input\_tag_name) | Nome da tag Label da Instancia. Ex: ec2_web  | `string` | `" "` | yes |
+| <a name="input_userdata"></a> [userdata](#input\_userdata) | Nome do script com os comandos a serem executados. Ex: install.sh  | `string` | `""` | no |
+| <a name="input_tag_name"></a> [tag_name](#input\_tag_name) | Nome da tag Label da Instancia. Ex: ec2_web  | `string` | `""` | yes |
 
 ## Outputs
 
 No outputs.
 #
 ## Como usar.
-  - Para utilizar localmente crie os arquivos descritos no começo deste tutorial, main.tf, versions.tf, variables.tf e outputs.tf.
+  - Para utilizar localmente crie os arquivos descritos no começo deste tutorial, main.tf, variables.tf e outputs.tf.
   - Após criar os arquivos, atente-se aos valores default das variáveis, pois podem ser alterados de acordo com sua necessidade. 
-  - A variável `count_available` define o quantidade de zonas de disponibilidade, públicas e privadas que seram criadas nessa Vpc.
+  - A variável `ec2_count` define o quantidade de instancias ec2 que seram criadas.
+  - A variável `ami_id` define qual AMI será utilizada. OBS: Pode ser obtida através da console da AWS ou utilizando um datasource do Terraform. ex: data "aws_ami"{}
   - Certifique-se que possua as credenciais da AWS - **`AWS_ACCESS_KEY_ID`** e **`AWS_SECRET_ACCESS_KEY`**.
 
 ### Comandos
