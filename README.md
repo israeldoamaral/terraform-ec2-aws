@@ -62,9 +62,7 @@ variable "security_group" {
   type = string
 }
 
-variable "key_name" {
-
-}
+variable "key_name" {}
 
 variable "userdata" {}
 
@@ -75,19 +73,9 @@ variable "tag_name" {}
 <summary>outputs.tf - Outputs de recursos que serão utilizados em outros módulos.</summary>
 
 ```hcl
-output "vpc" {
-  description = "Idendificador da VPC"
-  value       = module.network.vpc
-}
-
-output "public_subnet" {
-  description = "Subnet public "
-  value       = module.network.public_subnet
-}
-
-output "private_subnet" {
-  description = "Subnet private "
-  value       = module.network.private_subnet
+output "public_ip" {
+    # value = ["{aws_instance.ec2[*].public_ip}"]
+    value = "${formatlist("%v", aws_instance.ec2.*.public_ip)}"
 }
 
 ```
