@@ -66,7 +66,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_network"></a> [network](#module\_network) | github.com/israeldoamaral/terraform-vpc-aws | n/a |
+| <a name="module_network"></a> [network](#module\_network) | github.com/israeldoamaral/terraform-ec2-aws | n/a |
 
 ## Resources
 
