@@ -25,57 +25,28 @@ provider "aws" {
   region  = var.region
 }
 
-resource "aws_instance" "ec2" {
-  count                       = var.ec2_count
-  ami                         = var.ami_id
-  associate_public_ip_address = true
-  instance_type               = var.instance_type
-  subnet_id                   = var.subnet_id
-  # security_groups = [var.security_group]
-  vpc_security_group_ids      = [var.security_group]
-  key_name                    = var.key_name
-  user_data = "${file("${var.userdata}")}"
+module "ec2" {
+  source         = "./.terraform/modules/ec2"
+  ec2_count      = 1
+  ami_id         = "ami-04505e74c0741db8d"
+  instance_type  = "t2.micro"
+  subnet_id      = module.network.public_subnet[0]
+  security_group = module.security_group.security_group_id
+  key_name       = module.ssh-key.key_name
+  userdata       = "install_jenkins_docker.sh"
+  tag_name       = "Nome_da_instancia"
+}
 
-  tags = {
-    "Name" = var.tag_name
-  }
 
 }
 ```
-#
-<summary>variables.tf - Arquivo que contém as variáveis que o módulo irá utilizar e pode ter os valores alterados de acordo com a necessidade.</summary>
 
-```hcl
-variable "ec2_count" {
-  default = "1"
-}
-
-variable "ami_id" {}
-
-variable "instance_type" {
-  default = "t2.micro"
-}
-
-variable "subnet_id" {}
-
-variable "security_group" {
-  type = string
-}
-
-variable "key_name" {}
-
-variable "userdata" {}
-
-variable "tag_name" {}
-
-```
 #
 <summary>outputs.tf - Outputs de recursos que serão utilizados em outros módulos.</summary>
 
 ```hcl
 output "public_ip" {
-    # value = ["{aws_instance.ec2[*].public_ip}"]
-    value = "${formatlist("%v", aws_instance.ec2.*.public_ip)}"
+     value = module.ec2.public_ip
 }
 
 ```
