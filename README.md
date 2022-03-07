@@ -113,8 +113,9 @@ No outputs.
     owners = ["099720109477"] # Canonical
    }
    
+   #
+   <summary>Aplicando no módulo</summary> 
    
-    - Chamando no Módulo
      ami_id = "${data.aws_ami.ubuntu1604.id}"
    
     
