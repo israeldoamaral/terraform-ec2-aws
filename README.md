@@ -79,8 +79,9 @@ No resources.
 | <a name="input_ec2_count"></a> [ec2_count](#input\_ec2_count) | Número de instanacias a ser criada, ex: ec2_count = 2 | `string` | `"1"` | yes |
 | <a name="input_ami_id"></a> [ami_id](#input\_ami_id) | ID da AMI ex: "ami-04505e74c0741db8d" | `string` | `""` | yes |
 | <a name="input_instance_type"></a> [instance_type](#input\_instance_type) | Tipo de instancia da AWS. Ex: t3.medium | `string` | "t2.micro" | yes |
-| <a name="input_region"></a> [region](#input\_region) | Região na AWS, exemplo "us-east-1" | `string` | `" "` | no |
-| <a name="input_tag_vpc"></a> [tag\_vpc](#input\_tag\_vpc) | Tag Name da VPC | `string` | `""` | no |
+| <a name="input_subnet_id"></a> [subnet_id](#input\_subnet_id) | Id da Subnet criada na VPC, ex: "subnet-02c0fd20a4fc54abd" | `string` | `" "` | yes |
+| <a name="input_security_group"></a> [security_group](#input\_security_group) | ID do Segurity Group. Ex: sg-00a2eba48a39ad491  | `string` | `" "` | no |
+| <a name="input_key_name"></a> [key_name](#input\_key_name) | Nome da key_pair. Ex: terraform-key  | `string` | `" "` | no |
 
 ## Outputs
 
