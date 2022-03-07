@@ -76,9 +76,9 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_ec2_count"></a> [ec2_count](#input\_ec2_count) | Número de instanacias a ser crada, exemplo ec2_count=1 | `string` | `" "` | yes |
-| <a name="input_count_available"></a> [count\_available](#input\_count\_available) | Numero de Zonas de disponibilidade | `number` | `2` | no |
-| <a name="input_nacl"></a> [nacl](#input\_nacl) | Regras de Network Acls AWS | `map(object)` | n/a | yes |
+| <a name="input_ec2_count"></a> [ec2_count](#input\_ec2_count) | Número de instanacias a ser criada, ex: ec2_count = 2 | `string` | `"1"` | yes |
+| <a name="input_ami_id"></a> [ami_id](#input\_ami_id) | ID da AMI ex: "ami-04505e74c0741db8d" | `string` | `""` | yes |
+| <a name="input_instance_type"></a> [instance_type](#input\_instance_type) | Tipo de instancia da AWS. Ex: t3.medium | `string` | "t2.micro" | yes |
 | <a name="input_region"></a> [region](#input\_region) | Região na AWS, exemplo "us-east-1" | `string` | `" "` | no |
 | <a name="input_tag_vpc"></a> [tag\_vpc](#input\_tag\_vpc) | Tag Name da VPC | `string` | `""` | no |
 
