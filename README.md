@@ -93,7 +93,30 @@ No outputs.
   - Para utilizar localmente crie os arquivos descritos no começo deste tutorial, main.tf, variables.tf e outputs.tf.
   - Após criar os arquivos, atente-se aos valores default das variáveis, pois podem ser alterados de acordo com sua necessidade. 
   - A variável `ec2_count` define o quantidade de instancias ec2 que seram criadas.
-  - A variável `ami_id` define qual AMI será utilizada. OBS: Pode ser obtida através da console da AWS ou utilizando um datasource do Terraform. ex: data "aws_ami"{}
+  - A variável `ami_id` define qual AMI será utilizada. OBS: Pode ser obtida através da console da AWS ou utilizando um datasource do Terraform.
+    
+    Exemplo:
+    
+    data "aws_ami" "ubuntu1604" {
+    most_recent = true
+
+    filter {
+        name   = "name"
+        values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
+    }
+
+    filter {
+        name   = "virtualization-type"
+        values = ["hvm"]
+    }
+
+    owners = ["099720109477"] # Canonical
+   }
+   
+   
+   ami_id = "${data.aws_ami.ubuntu1604.id}"
+   
+    
   - Certifique-se que possua as credenciais da AWS - **`AWS_ACCESS_KEY_ID`** e **`AWS_SECRET_ACCESS_KEY`**.
 
 ### Comandos
