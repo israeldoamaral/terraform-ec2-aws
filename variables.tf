@@ -1,6 +1,6 @@
-variable "ec2_count" {
-  default = "1"
-}
+# variable "ec2_count" {
+#   default = "1"
+# }
 
 variable "ami_id" {}
 
