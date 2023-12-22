@@ -135,7 +135,7 @@ No outputs.
   - A variável `subnet_id` define qual Id da subnet sera utilizado. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
   - A variável `security_group` define o Id de um Security Group já criado. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
   - A variável `key_name` Nome da chave para acessar uma instancia.
-  #
+  
      OBS: Caso queira utilizar chame o módulo ssh-key acesse "https://github.com/israeldoamaral/terraform-sshkey-aws" siga os passos.
 
   ```hcl
