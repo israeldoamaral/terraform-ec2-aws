@@ -39,9 +39,26 @@ module "ec2" {
 <summary>variables.tf - Arquivo que contém as variáveis que o módulo irá utilizar e pode ter os valores alterados de acordo com a necessidade.</summary>
 
 ```hcl
-output "public_ip" {
-     value = module.ec2.public_ip
+
+variable "ami_id" {}
+
+variable "instance_type" {
+  default = "t2.micro"
 }
+
+variable "subnet_id" {}
+
+variable "security_group" {
+  type = string
+}
+
+variable "key_name" {
+
+}
+
+variable "userdata" {}
+
+variable "tag_name" {}
 
 ...
 
