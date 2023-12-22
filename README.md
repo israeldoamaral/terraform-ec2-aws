@@ -41,25 +41,39 @@ module "ec2" {
 
 ```hcl
 
-variable "ami_id" {}
+variable "ami_id" {
+  type = string
+  default = ""
+}
 
 variable "instance_type" {
   default = "t2.micro"
 }
 
-variable "subnet_id" {}
+variable "subnet_id" {
+  default = ""
+}
 
 variable "security_group" {
   type = string
+  default = ""
+  description = "Security group id"
 }
 
 variable "key_name" {
-
+  type = string
+  default = ""
 }
 
-variable "userdata" {}
+variable "userdata" {
+  type = string
+  default = ""
+}
 
-variable "tag_name" {}
+variable "tag_name" {
+  type = string
+  default = ""
+}
 
 ```
 
