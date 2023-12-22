@@ -30,7 +30,7 @@ module "ec2" {
   instance_type  = "t2.micro"
   subnet_id      = module.network.public_subnet[0]
   security_group = module.security_group.security_group_id
-  key_name       = module.ssh-key.key_name
+  key_name       = ""       #module.ssh-key.key_name
   tag_name       = "Nome_da_instancia"
   userdata       = ""
 }
