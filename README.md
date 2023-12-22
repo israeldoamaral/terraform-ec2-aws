@@ -95,15 +95,15 @@ output "public_ip" {
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15.4 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.0 |
 
-## Providers
 
-No providers.
-
-## Modules
+## Modulos Usados
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_network"></a> [network](#module\_network) | github.com/israeldoamaral/terraform-ec2-aws | n/a |
+| <a name="module_ec2"></a> [ec2](#module\_ec2) | https://github.com/israeldoamaral/terraform-ec2-aws | n/a |
+| <a name="module_ssh-key"></a> [ssh-key](#module\_ssh-key) | https://github.com/israeldoamaral/terraform-sshkey-aws | n/a |
+| <a name="module_network"></a> [network](#module\_network) | https://github.com/israeldoamaral/terraform-vpc-aws | n/a |
+<a name="module_security_group"></a> [security_group](#module\_security_group) | https://github.com/israeldoamaral/terraform-sg-aws | n/a |
 
 ## Resources
 
@@ -131,38 +131,17 @@ No outputs.
   - Após criar os arquivos, atente-se aos valores default das variáveis, pois podem ser alterados de acordo com sua necessidade. 
   - A variável `ec2_count` define o quantidade de instancias ec2 que seram criadas.
   - A variável `ami_id` define qual AMI será utilizada. OBS: Pode ser obtida através da console da AWS ou utilizando um datasource do Terraform.
-  
-  > Exemplo de DataSource
-
-  ```hcl
-   data "aws_ami" "ubuntu1604" {
-   most_recent = true
-
-   filter {
-     name   = "name"
-     values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
-   }
-
-   filter {
-     name   = "virtualization-type"
-     values = ["hvm"]
-   }
-
-   owners = ["099720109477"] # Canonical
-   }
-
-  ```
-   
-  > Aplicando no módulo
-  
-  ```hcl 
-  ami_id = "${data.aws_ami.ubuntu1604.id}"
-  ```  
-  
   - A variável `instance_type` define qual tipo de Instancia será utilizada. Ex: t2.micro
   - A variável `subnet_id` define qual Id da subnet sera utilizado. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
   - A variável `security_group` define o Id de um Security Group já criado. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
-  - A variável `key_name` Nome da chave para acessar uma instancia. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
+  - A variável `key_name` Nome da chave para acessar uma instancia.
+     OBS: Caso queira utilizar chame o módulo ssh-key acesse "https://github.com/israeldoamaral/terraform-sshkey-aws" siga os passos.
+     ex. de como referecia-lo no módulo ec2:
+    
+      module "ec2" {
+      key_name       = module.ssh-key.key_name
+      }
+    
   - A variável `userdata` Define o nome do arquivo (script) com os comandos a serem executados na instancia. Ex: install.sh
   - A variável `tag_name` Define o nome que sera mostrado no campo tag da instancia.
   - Certifique-se que possua as credenciais da AWS - **`AWS_ACCESS_KEY_ID`** e **`AWS_SECRET_ACCESS_KEY`**.
