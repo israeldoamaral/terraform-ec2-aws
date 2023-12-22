@@ -36,7 +36,7 @@ module "ec2" {
 
 ```
 #
-<summary>variables.tf - Outputs de recursos que serão utilizados em outros módulos. OBS: Lembre-se de modificar o nome do módulo. Ex: "value = module.NOME.public_ip" Onde NOME tem que ser o mesmo criado</summary>
+<summary>variables.tf - Arquivo que contém as variáveis que o módulo irá utilizar e pode ter os valores alterados de acordo com a necessidade.</summary>
 
 ```hcl
 output "public_ip" {
