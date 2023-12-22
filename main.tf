@@ -7,7 +7,8 @@ resource "aws_instance" "ec2" {
   # security_groups = [var.security_group]
   vpc_security_group_ids      = [var.security_group]
   key_name                    = var.key_name
-  user_data = "${file("${var.userdata}")}"
+  #user_data = "${file("${var.userdata}")}"
+  user_data                   = var.userdata != "" ? "${file("${var.userdata}")}" : ""
 
   tags = {
     "Name" = var.tag_name
