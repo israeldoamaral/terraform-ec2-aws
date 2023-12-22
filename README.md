@@ -35,8 +35,6 @@ module "ec2" {
   tag_name       = "Nome_da_instancia"
 }
 
-
-}
 ```
 
 #
