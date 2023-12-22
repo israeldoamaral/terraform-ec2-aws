@@ -25,14 +25,14 @@ provider "aws" {
 
 module "ec2" {
   source         = "git::https://github.com/israeldoamaral/terraform-ec2-aws"
-  ec2_count      = 1
-  ami_id         = "ami-04505e74c0741db8d"
+  count          = 1
+  ami_id         = "ami-079db87dc4c10ac91"
   instance_type  = "t2.micro"
   subnet_id      = module.network.public_subnet[0]
   security_group = module.security_group.security_group_id
   key_name       = module.ssh-key.key_name
   tag_name       = "Nome_da_instancia"
-  userdata       = "ex_install_jenkins_docker.sh"
+  userdata       = ""
 }
 
 ```
