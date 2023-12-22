@@ -31,7 +31,6 @@ module "ec2" {
   subnet_id      = module.network.public_subnet[0]
   security_group = module.security_group.security_group_id
   key_name       = module.ssh-key.key_name
-  userdata       = "install_jenkins_docker.sh"
   tag_name       = "Nome_da_instancia"
 }
 
