@@ -32,6 +32,7 @@ module "ec2" {
   security_group = module.security_group.security_group_id
   key_name       = module.ssh-key.key_name
   tag_name       = "Nome_da_instancia"
+  userdata       = "ex_install_jenkins_docker.sh"
 }
 
 ```
