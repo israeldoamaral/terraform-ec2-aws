@@ -60,7 +60,8 @@ variable "userdata" {}
 
 variable "tag_name" {}
 
-...
+```
+
 #
 <summary>outputs.tf - Outputs de recursos que serão utilizados em outros módulos. OBS: Lembre-se de modificar o nome do módulo. Ex: "value = module.NOME.public_ip" Onde NOME tem que ser o mesmo criado</summary>
 
