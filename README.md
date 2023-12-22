@@ -135,13 +135,17 @@ No outputs.
   - A variável `subnet_id` define qual Id da subnet sera utilizado. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
   - A variável `security_group` define o Id de um Security Group já criado. OBS: Pode ser obtida pela console da AWS ou utilizando o resultado de um outro módulo.
   - A variável `key_name` Nome da chave para acessar uma instancia.
+  #
      OBS: Caso queira utilizar chame o módulo ssh-key acesse "https://github.com/israeldoamaral/terraform-sshkey-aws" siga os passos.
-     ex. de como referecia-lo no módulo ec2:
+
+  ```hcl
+  ex. de como referecia-lo no módulo ec2:
     
       module "ec2" {
       key_name       = module.ssh-key.key_name
       }
-    
+  ```
+  
   - A variável `userdata` Define o nome do arquivo (script) com os comandos a serem executados na instancia. Ex: install.sh
   - A variável `tag_name` Define o nome que sera mostrado no campo tag da instancia.
   - Certifique-se que possua as credenciais da AWS - **`AWS_ACCESS_KEY_ID`** e **`AWS_SECRET_ACCESS_KEY`**.
